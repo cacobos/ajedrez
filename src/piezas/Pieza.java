@@ -4,19 +4,25 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import ajedrez.Casilla;
+import ajedrez.ControlJuego;
+
 public abstract class Pieza {
+	protected ControlJuego controlJuego;
 	protected Image imagen;
 	private int ancho;
 	private int alto;
-	private int color;
-	final static int BLANCA=1;
-	final static int NEGRA=2;
+	protected int color;
+	public final static int BLANCA=1;
+	public final static int NEGRA=2;
 	private int coordX;
 	private int coordY;
-	public Pieza(String nomFichero, int ancho, int alto, int color, int coordX, int coordY) {
+	public Pieza(ControlJuego controlJuego, String nomFichero, int ancho, int alto, int color, int coordX, int coordY) {
+		this.controlJuego=controlJuego;
 		this.ancho = ancho;
 		this.alto = alto;
 		this.color = color;
@@ -29,8 +35,8 @@ public abstract class Pieza {
 		}	
 	}
 	
-	public boolean puedeMover(int coordX, int coordY) {
-		return false;
+	public List<Casilla> puedeMover(int coordX, int coordY) {
+		return null;
 	}
 
 	public Image getImagen() {
