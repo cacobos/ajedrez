@@ -6,10 +6,10 @@ import java.util.List;
 import ajedrez.Casilla;
 import ajedrez.ControlJuego;
 
-public class Alfil extends Pieza {
+public class Dama extends Pieza {
 
-	public Alfil(ControlJuego controlJuego,  int color) {
-		super(controlJuego, color==1?"./imagenes/reyblanco.png":"./imagenes/reynegro.png", color);
+	public Dama(ControlJuego controlJuego,  int color) {
+		super(controlJuego, color==1?"./imagenes/reyblanco.png":"./imagenes/reynegro.png",  color);
 	}
 
 	@Override
@@ -20,11 +20,82 @@ public class Alfil extends Pieza {
 		int x, y;
 		x = coordX;
 		y = coordY;
-		choca=false;
+		choca = false;
 		while (!choca) {
+			x++;
+			y++;
+			c = controlJuego.getCasilla(x, y);
+			if (c.isOcupada()) {
+				choca = true;
+				if (c.getColor() != color) {
+					lista.add(controlJuego.getCasilla(x, y));
+				}
+			} else if (coordX < 0 || coordX > 7 || coordY < 0 || coordY > 7) {
+				choca = true;
+			} else {
+				lista.add(controlJuego.getCasilla(x, y));
+			}
+		}
+		x = coordX;
+		y = coordY;
+		choca = false;
+		while (!choca) {
+			x--;
+			y--;
+			c = controlJuego.getCasilla(x, y);
+			if (c.isOcupada()) {
+				choca = true;
+				if (c.getColor() != color) {
+					lista.add(controlJuego.getCasilla(x, y));
+				}
+			} else if (coordX < 0 || coordX > 7 || coordY < 0 || coordY > 7) {
+				choca = true;
+			} else {
+				lista.add(controlJuego.getCasilla(x, y));
+			}
+		}
+		x = coordX;
+		y = coordY;
+		choca = false;
+		while (!choca) {
+			x--;
+			y++;
+			c = controlJuego.getCasilla(x, y);
+			if (c.isOcupada()) {
+				choca = true;
+				if (c.getColor() != color) {
+					lista.add(controlJuego.getCasilla(x, y));
+				}
+			} else if (coordX < 0 || coordX > 7 || coordY < 0 || coordY > 7) {
+				choca = true;
+			} else {
+				lista.add(controlJuego.getCasilla(x, y));
+			}
+		}
+		x = coordX;
+		y = coordY;
+		choca = false;
+		while (!choca) {
+			x++;
+			y--;
+			c = controlJuego.getCasilla(x, y);
+			if (c.isOcupada()) {
+				choca = true;
+				if (c.getColor() != color) {
+					lista.add(controlJuego.getCasilla(x, y));
+				}
+			} else if (coordX < 0 || coordX > 7 || coordY < 0 || coordY > 7) {
+				choca = true;
+			} else {
+				lista.add(controlJuego.getCasilla(x, y));
+			}
+		}
 
+		x = coordX;
+		y = coordY;
+		choca = false;
+		while (!choca) {
 			x++;
-			y++;
 			c = controlJuego.getCasilla(x, y);
 			if (c.isOcupada()) {
 				choca = true;
@@ -39,9 +110,8 @@ public class Alfil extends Pieza {
 		}
 		x = coordX;
 		y = coordY;
-		choca=false;
+		choca = false;
 		while (!choca) {
-			x--;
 			y--;
 			c = controlJuego.getCasilla(x, y);
 			if (c.isOcupada()) {
@@ -57,10 +127,9 @@ public class Alfil extends Pieza {
 		}
 		x = coordX;
 		y = coordY;
-		choca=false;
+		choca = false;
 		while (!choca) {
 			x--;
-			y++;
 			c = controlJuego.getCasilla(x, y);
 			if (c.isOcupada()) {
 				choca = true;
@@ -75,10 +144,9 @@ public class Alfil extends Pieza {
 		}
 		x = coordX;
 		y = coordY;
-		choca=false;
+		choca = false;
 		while (!choca) {
-			x++;
-			y--;
+			y++;
 			c = controlJuego.getCasilla(x, y);
 			if (c.isOcupada()) {
 				choca = true;
@@ -91,6 +159,7 @@ public class Alfil extends Pieza {
 				lista.add(controlJuego.getCasilla(x, y));
 			}
 		}
+
 		return lista;
 	}
 

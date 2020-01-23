@@ -6,12 +6,12 @@ import java.util.List;
 import ajedrez.Casilla;
 import ajedrez.ControlJuego;
 
-public class Alfil extends Pieza {
+public class Torre extends Pieza{
 
-	public Alfil(ControlJuego controlJuego,  int color) {
+	public Torre(ControlJuego controlJuego,  int color) {
 		super(controlJuego, color==1?"./imagenes/reyblanco.png":"./imagenes/reynegro.png", color);
 	}
-
+	
 	@Override
 	public List<Casilla> puedeMover(int coordX, int coordY) {
 		Casilla c;
@@ -22,9 +22,7 @@ public class Alfil extends Pieza {
 		y = coordY;
 		choca=false;
 		while (!choca) {
-
 			x++;
-			y++;
 			c = controlJuego.getCasilla(x, y);
 			if (c.isOcupada()) {
 				choca = true;
@@ -41,7 +39,6 @@ public class Alfil extends Pieza {
 		y = coordY;
 		choca=false;
 		while (!choca) {
-			x--;
 			y--;
 			c = controlJuego.getCasilla(x, y);
 			if (c.isOcupada()) {
@@ -60,7 +57,6 @@ public class Alfil extends Pieza {
 		choca=false;
 		while (!choca) {
 			x--;
-			y++;
 			c = controlJuego.getCasilla(x, y);
 			if (c.isOcupada()) {
 				choca = true;
@@ -77,8 +73,7 @@ public class Alfil extends Pieza {
 		y = coordY;
 		choca=false;
 		while (!choca) {
-			x++;
-			y--;
+			y++;
 			c = controlJuego.getCasilla(x, y);
 			if (c.isOcupada()) {
 				choca = true;

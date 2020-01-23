@@ -19,15 +19,15 @@ public abstract class Pieza {
 	protected int color;
 	public final static int BLANCA=1;
 	public final static int NEGRA=2;
-	private int coordX;
-	private int coordY;
-	public Pieza(ControlJuego controlJuego, String nomFichero, int ancho, int alto, int color, int coordX, int coordY) {
+	protected int coordX;
+	protected int coordY;
+	public Pieza(ControlJuego controlJuego, String nomFichero,  int color) {
 		this.controlJuego=controlJuego;
-		this.ancho = ancho;
-		this.alto = alto;
+		this.ancho = 50;
+		this.alto = 50;
 		this.color = color;
-		this.coordX = coordX;
-		this.coordY = coordY;
+		this.coordX = 0;
+		this.coordY = 0;
 		try {
 			imagen=ImageIO.read(new File(nomFichero)).getScaledInstance(ancho, alto, BufferedImage.SCALE_SMOOTH);
 		} catch (IOException e) {
