@@ -35,7 +35,7 @@ public abstract class Pieza {
 		}	
 	}
 	
-	public List<Casilla> puedeMover(int coordX, int coordY) {
+	public List<Casilla> puedeMover() {
 		return null;
 	}
 

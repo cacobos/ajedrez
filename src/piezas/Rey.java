@@ -13,7 +13,7 @@ public class Rey extends Pieza {
 	}
 
 	@Override
-	public List<Casilla> puedeMover(int coordX, int coordY) {
+	public List<Casilla> puedeMover() {
 		Casilla c;
 		List<Casilla> lista = new ArrayList<Casilla>();
 		c = controlJuego.getCasilla(coordX + 1, coordY - 1);

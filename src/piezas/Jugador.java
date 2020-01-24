@@ -32,11 +32,11 @@ public class Jugador {
 		}
 		for (int i = 0; i < 2; i++) {
 			a = new Alfil(controlJuego, color);
-			a.setCoordX(i * 3 + 3);
+			a.setCoordX(i * 3 + 2);
 			a.setCoordY(color == 1 ? 7 : 0);
 			piezas.add(a);
 			t = new Torre(controlJuego, color);
-			t.setCoordX(i * 8);
+			t.setCoordX(i * 7);
 			t.setCoordY(color == 1 ? 7 : 0);
 			piezas.add(t);
 			c = new Caballo(controlJuego, color);
@@ -54,4 +54,38 @@ public class Jugador {
 		rey.setCoordY(color == 1 ? 7 : 0);
 		piezas.add(rey);
 	}
+
+	public List<Pieza> getPiezas() {
+		return piezas;
+	}
+
+	public void setPiezas(List<Pieza> piezas) {
+		this.piezas = piezas;
+	}
+
+	public int getColor() {
+		return color;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
+	}
+
+	public Rey getRey() {
+		return rey;
+	}
+
+	public void setRey(Rey rey) {
+		this.rey = rey;
+	}
+
+	public ControlJuego getControlJuego() {
+		return controlJuego;
+	}
+
+	public void setControlJuego(ControlJuego controlJuego) {
+		this.controlJuego = controlJuego;
+	}
+	
+	
 }

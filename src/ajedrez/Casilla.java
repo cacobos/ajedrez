@@ -6,12 +6,10 @@ import piezas.Pieza;
 
 public class Casilla {
 	private Pieza pieza;
-	private Color color;
 	private int coordX;
 	private int coordY;
 
-	public Casilla(Color color, int coordX, int coordY) {
-		this.color = color;
+	public Casilla(int coordX, int coordY) {
 		this.coordX = coordX;
 		this.coordY = coordY;
 	}
@@ -63,10 +61,4 @@ public class Casilla {
 	public void setCoordY(int coordY) {
 		this.coordY = coordY;
 	}
-
-	public void setColor(Color color) {
-		this.color = color;
-	}
-	
-	
 }

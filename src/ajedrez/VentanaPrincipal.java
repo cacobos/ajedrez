@@ -10,10 +10,11 @@ public class VentanaPrincipal {
 	
 	public VentanaPrincipal() {
 		ventana=new JFrame();
-		ventana.setBounds(0, 0, 600, 400);
+		ventana.setBounds(0, 0, 400, 600);
 		inicializar();
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setVisible(true);
+		ventana.setResizable(false);
 	}
 
 	private void inicializar() {

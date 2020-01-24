@@ -13,11 +13,11 @@ public class Peon extends Pieza {
 	
 
 	public Peon(ControlJuego controlJuego,  int color) {
-		super(controlJuego, color==1?"./imagenes/reyblanco.png":"./imagenes/reynegro.png", color);
+		super(controlJuego, color==1?"./imagenes/peonblanco.png":"./imagenes/peonnegro.png", color);
 	}
 
 	@Override
-	public List<Casilla> puedeMover(int coordX, int coordY) {
+	public List<Casilla> puedeMover() {
 		List<Casilla> casillas = new ArrayList<Casilla>();
 		if (color == Pieza.BLANCA) {
 			if (coordY == 6 && !controlJuego.getCasilla(coordX, 5).isOcupada()) {
@@ -43,10 +43,12 @@ public class Peon extends Pieza {
 			} else if (!controlJuego.getCasilla(coordX, coordY + 1).isOcupada()) {
 				casillas.add(controlJuego.getCasilla(coordX, coordY + 1));
 			}
-			if (controlJuego.getCasilla(coordX + 1, coordY - 1).isNegra()) {
+			if (controlJuego.getCasilla(coordX + 1, coordY - 1).isBlanca()) {
+				System.out.println("peon mueve x+1");
 				casillas.add(controlJuego.getCasilla(coordX + 1, coordY + 1));
 			}
-			if (controlJuego.getCasilla(coordX - 1, coordY - 1).isNegra()) {
+			if (controlJuego.getCasilla(coordX - 1, coordY - 1).isBlanca()) {
+				System.out.println("peon mueve x-1");
 				casillas.add(controlJuego.getCasilla(coordX - 1, coordY + 1));
 			}
 		}
