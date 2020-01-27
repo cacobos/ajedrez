@@ -93,7 +93,6 @@ public abstract class Pieza {
 
 	public static int getNegra() {
 		return NEGRA;
-	}
-	
+	}	
 	
 }

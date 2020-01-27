@@ -5,13 +5,21 @@ import java.util.List;
 
 import ajedrez.Casilla;
 import ajedrez.ControlJuego;
-
+/**
+ * Clase que define una pieza alfil
+ */
 public class Alfil extends Pieza {
-
+/**
+ * Constructor parametrizado
+ * @param controlJuego
+ * @param color
+ */
 	public Alfil(ControlJuego controlJuego, int color) {
 		super(controlJuego, color == 1 ? "./imagenes/alfilblanco.png" : "./imagenes/alfilnegro.png", color);
 	}
-
+/**
+ * Devuelve una lista con las casillas a las que se puede mover una pieza
+ */
 	@Override
 	public List<Casilla> puedeMover() {
 		Casilla c;

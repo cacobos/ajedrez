@@ -19,6 +19,7 @@ public class Peon extends Pieza {
 	@Override
 	public List<Casilla> puedeMover() {
 		List<Casilla> casillas = new ArrayList<Casilla>();
+		try {
 		if (color == Pieza.BLANCA) {
 			if (coordY == 6 && !controlJuego.getCasilla(coordX, 5).isOcupada()) {
 				casillas.add(controlJuego.getCasilla(coordX, 5));
@@ -43,16 +44,20 @@ public class Peon extends Pieza {
 			} else if (!controlJuego.getCasilla(coordX, coordY + 1).isOcupada()) {
 				casillas.add(controlJuego.getCasilla(coordX, coordY + 1));
 			}
-			if (controlJuego.getCasilla(coordX + 1, coordY - 1).isBlanca()) {
+			if (controlJuego.getCasilla(coordX + 1, coordY + 1).isBlanca()) {
 				System.out.println("peon mueve x+1");
 				casillas.add(controlJuego.getCasilla(coordX + 1, coordY + 1));
 			}
-			if (controlJuego.getCasilla(coordX - 1, coordY - 1).isBlanca()) {
+			if (controlJuego.getCasilla(coordX - 1, coordY + 1).isBlanca()) {
 				System.out.println("peon mueve x-1");
 				casillas.add(controlJuego.getCasilla(coordX - 1, coordY + 1));
 			}
 		}
-
+		}
+		catch(IndexOutOfBoundsException e) {
+			
+		}
+		
 		return casillas;
 	}
 }
