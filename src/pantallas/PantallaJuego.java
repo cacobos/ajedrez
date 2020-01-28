@@ -1,6 +1,7 @@
 package pantallas;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ComponentEvent;
@@ -23,6 +24,7 @@ public class PantallaJuego implements Pantalla {
 	private BufferedImage imagenTablero;
 	private Casilla casillaClickada;
 	private Pieza piezaAMover;
+	private final static Font FUENTETIEMPO = new Font("Fuente1", 3, 40);
 	
 
 	/**
@@ -51,13 +53,14 @@ public class PantallaJuego implements Pantalla {
 	@Override
 	public void pintarPantalla(Graphics g) {
 		g.drawImage(fondo, 0, 0, null);
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 50, 400, 50);
 		g.setColor(Color.BLACK);
-		g.drawString(controlJuego.getRelojBlancas().getTiempo(), 150, 70);
+		g.setFont(FUENTETIEMPO);
+		g.drawString(controlJuego.getRelojNegras().getTexto(), 250, 50);
+		g.setColor(Color.WHITE);
+		g.drawString(controlJuego.getRelojBlancas().getTexto(), 250, 550);
 		if (controlJuego.esJaque()) {
-			g.setColor(Color.BLACK);
-			g.drawString("JAQUE", 150, 70);
+			g.setColor(Color.RED);
+			g.drawString("JAQUE", 120, 90);
 		}
 		g.drawImage(imagenTablero, 0, 100, null);
 	}

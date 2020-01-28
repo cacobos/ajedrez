@@ -1,6 +1,8 @@
 package ajedrez;
 
+import piezas.Dama;
 import piezas.Jugador;
+import piezas.Peon;
 import piezas.Pieza;
 import piezas.Rey;
 
@@ -39,8 +41,9 @@ public class ControlJuego {
 		relojNegras = new Reloj();
 		relojBlancas.start();
 		relojNegras.start();
-		relojBlancas.play();
-		relojNegras.play();
+		relojBlancas.comenzar();
+		relojNegras.comenzar();
+		relojNegras.parar();
 	}
 
 	public Casilla getCasilla(int x, int y) {
@@ -76,6 +79,18 @@ public class ControlJuego {
 		casillaOrigen.setPieza(null);
 		casillaDestino.getPieza().setCoordX(casillaDestino.getCoordX());
 		casillaDestino.getPieza().setCoordY(casillaDestino.getCoordY());
+		if(casillaDestino.getPieza() instanceof Peon) {
+			if(casillaDestino.getCoordY()==0 && casillaDestino.getColor()==1) {
+				jugadorBlanco.getPiezas().remove(casillaDestino.getPieza());
+				casillaDestino.setPieza(new Dama(this, Pieza.BLANCA));
+				jugadorBlanco.getPiezas().add(casillaDestino.getPieza());
+			}else if(casillaDestino.getCoordY()==7 && casillaDestino.getColor()==2) {
+				jugadorNegro.getPiezas().remove(casillaDestino.getPieza());
+				casillaDestino.setPieza(new Dama(this, Pieza.NEGRA));
+				jugadorNegro.getPiezas().add(casillaDestino.getPieza());
+				
+			}
+		}
 	}
 
 	/**
@@ -185,11 +200,11 @@ public class ControlJuego {
 	public void siguienteTurno() {
 		turno = !turno;
 		if (turno) {
-			relojNegras.pause();
-			relojBlancas.play();
+			relojNegras.parar();
+			relojBlancas.continuar();
 		} else {
-			relojBlancas.pause();
-			relojNegras.play();
+			relojBlancas.parar();
+			relojNegras.continuar();
 		}
 	}
 
