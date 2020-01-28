@@ -1,5 +1,7 @@
 package ajedrez;
 
+import java.io.File;
+
 import piezas.Dama;
 import piezas.Jugador;
 import piezas.Peon;
@@ -70,6 +72,8 @@ public class ControlJuego {
 	 * @param casillaDestino
 	 */
 	public void mover(Casilla casillaOrigen, Casilla casillaDestino) {
+		ReproduccionSonido rs=new ReproduccionSonido(new File("./sonidos/muevepieza.mp3"));
+		rs.start();
 		if (casillaDestino.getPieza() == jugadorNegro.getRey()) {
 			gana = 1;
 		} else if (casillaDestino.getPieza() == jugadorBlanco.getRey()) {
@@ -90,7 +94,7 @@ public class ControlJuego {
 				jugadorNegro.getPiezas().add(casillaDestino.getPieza());
 				
 			}
-		}
+		}		
 	}
 
 	/**
@@ -111,7 +115,6 @@ public class ControlJuego {
 	 */
 	public boolean esJaque() {
 		boolean reyMuere = false;
-		Rey rey = !turno ? reyNegro() : reyBlanco();
 		if (turno) {
 			for (int i = 0; i < casillas.length; i++) {
 				for (int j = 0; j < casillas[i].length; j++) {

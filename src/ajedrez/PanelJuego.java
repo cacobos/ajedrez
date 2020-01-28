@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import pantallas.Pantalla;
+import pantallas.PantallaFinal;
 import pantallas.PantallaJuego;
 import piezas.Pieza;
 
@@ -21,22 +22,23 @@ public class PanelJuego extends JPanel implements MouseListener, MouseMotionList
 	/**
 	 * 
 	 */
-	private Pantalla pantalla;	
+	private Pantalla pantalla;
 	private Thread hilo;
+	private boolean gananBlancas=false;
 
 	public PanelJuego() {
-		pantalla=new PantallaJuego();
-pantalla.inicializarPantalla(this);
+		pantalla = new PantallaJuego();	
+		pantalla.inicializarPantalla(this);
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
 
 		hilo = new Thread(this);
 		hilo.start();
-	}	
+	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
-				pantalla.pintarPantalla(g);
+		pantalla.pintarPantalla(g);
 
 	}
 
@@ -54,7 +56,7 @@ pantalla.inicializarPantalla(this);
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+
 	}
 
 	@Override
@@ -74,21 +76,15 @@ pantalla.inicializarPantalla(this);
 		pantalla.pulsarRaton(e);
 	}
 
-	
-
-	
-
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
-	
-
 	@Override
 	public void run() {
-		while (true) {	
+		while (true) {
 			pantalla.ejecutarFrame();
 			repaint();
 			try {
@@ -98,5 +94,18 @@ pantalla.inicializarPantalla(this);
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public boolean isGananBlancas() {
+		return gananBlancas;
+	}
+
+	public void setGananBlancas(boolean gananBlancas) {
+		this.gananBlancas = gananBlancas;
+	}
+	
+	public void asignarPantalla(Pantalla p) {
+		this.pantalla=p;
+		p.inicializarPantalla(this);
 	}
 }

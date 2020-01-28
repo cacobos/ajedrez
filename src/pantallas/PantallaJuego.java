@@ -18,6 +18,7 @@ import ajedrez.PanelJuego;
 import piezas.Pieza;
 
 public class PantallaJuego implements Pantalla {
+	private PanelJuego panelJuego;
 	private ControlJuego controlJuego;
 	private Image madera;
 	private BufferedImage fondo;
@@ -25,13 +26,13 @@ public class PantallaJuego implements Pantalla {
 	private Casilla casillaClickada;
 	private Pieza piezaAMover;
 	private final static Font FUENTETIEMPO = new Font("Fuente1", 3, 40);
-	
 
 	/**
 	 * Cargamos las imágenes
 	 */
 	@Override
 	public void inicializarPantalla(PanelJuego panelJuego) {
+		this.panelJuego=panelJuego;
 		controlJuego = new ControlJuego();
 		imagenTablero = new BufferedImage(400, 400, BufferedImage.TYPE_INT_ARGB);
 		crearTablero();
@@ -71,12 +72,19 @@ public class PantallaJuego implements Pantalla {
 	 */
 	@Override
 	public void ejecutarFrame() {
+		PantallaFinal p;
 		switch (controlJuego.comprobarFinJuego()) {
 		case 1:
-			System.out.println("Ganan blancas");
+			p=new PantallaFinal();
+			p.inicializarPantalla(panelJuego);
+			p.setGanador(true);
+			panelJuego.asignarPantalla(p);
 			break;
 		case 2:
-			System.out.println("Ganan negras");
+			p=new PantallaFinal();
+			p.inicializarPantalla(panelJuego);
+			p.setGanador(false);
+			panelJuego.asignarPantalla(p);
 			break;
 		case 3:
 			crearTablero();
@@ -104,8 +112,8 @@ public class PantallaJuego implements Pantalla {
 	}
 
 	/**
-	 * Al pulsar el ratón, si es sobre una pieza, marca dónde se puede mover. Si no,
-	 * hace un movimiento
+	 * Al pulsar el ratón, si es sobre una pieza, marca dónde se puede mover. Si
+	 * no, hace un movimiento
 	 */
 	@Override
 	public void pulsarRaton(MouseEvent e) {
@@ -186,7 +194,7 @@ public class PantallaJuego implements Pantalla {
 	 */
 	private void marcarCasilla(Casilla c) {
 		Graphics g = imagenTablero.getGraphics();
-		g.setColor(Color.RED);
+		g.setColor(Color.GREEN);
 		g.drawRect(c.getCoordX() * 50, c.getCoordY() * 50, 50, 50);
 		g.dispose();
 	}
@@ -199,7 +207,7 @@ public class PantallaJuego implements Pantalla {
 	 */
 	private void marcarClick(int coordX, int coordY) {
 		Graphics g = imagenTablero.getGraphics();
-		g.setColor(Color.RED);
+		g.setColor(Color.GREEN);
 		g.drawRect(coordX * 50, coordY * 50, 50, 50);
 		g.dispose();
 	}
