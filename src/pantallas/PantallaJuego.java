@@ -23,8 +23,7 @@ public class PantallaJuego implements Pantalla {
 	private BufferedImage imagenTablero;
 	private Casilla casillaClickada;
 	private Pieza piezaAMover;
-	private String textoTiempoBlanco;
-	private String textoTiempoNegro;
+	
 
 	/**
 	 * Cargamos las imágenes
@@ -54,7 +53,8 @@ public class PantallaJuego implements Pantalla {
 		g.drawImage(fondo, 0, 0, null);
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 50, 400, 50);
-
+		g.setColor(Color.BLACK);
+		g.drawString(controlJuego.getRelojBlancas().getTiempo(), 150, 70);
 		if (controlJuego.esJaque()) {
 			g.setColor(Color.BLACK);
 			g.drawString("JAQUE", 150, 70);
