@@ -14,6 +14,11 @@ import javax.imageio.ImageIO;
 
 import ajedrez.PanelJuego;
 
+/**
+ * Clase que gestiona la pantalla del final del juego
+ * @author carlos
+ *
+ */
 public class PantallaFinal implements Pantalla {
 	private BufferedImage fondo;
 	private Image gananBlancas;
@@ -32,7 +37,6 @@ public class PantallaFinal implements Pantalla {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		blancas = panelJuego.isGananBlancas();
 
 	}
 
@@ -49,7 +53,7 @@ public class PantallaFinal implements Pantalla {
 
 	@Override
 	public void ejecutarFrame() {
-		// TODO Auto-generated method stub
+		cargarFondo();
 
 	}
 
@@ -73,9 +77,11 @@ public class PantallaFinal implements Pantalla {
 
 	public void setGanador(boolean blancas) {
 		this.blancas = blancas;
-		cargarFondo();
 	}
 
+	/**
+	 * En función de qué color ha sido el ganador, dibujamos una imagen u otra sobre el fondo
+	 */
 	private void cargarFondo() {
 		fondo = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
 		Graphics g = fondo.getGraphics();

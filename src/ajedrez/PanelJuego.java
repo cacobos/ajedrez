@@ -15,9 +15,14 @@ import javax.swing.JPanel;
 
 import pantallas.Pantalla;
 import pantallas.PantallaFinal;
+import pantallas.PantallaInicio;
 import pantallas.PantallaJuego;
 import piezas.Pieza;
-
+/**
+ * Clase que identifica el panel sobre el que se coloca el juego
+ * @author carlos
+ *
+ */
 public class PanelJuego extends JPanel implements MouseListener, MouseMotionListener, Runnable {
 	/**
 	 * 
@@ -25,9 +30,12 @@ public class PanelJuego extends JPanel implements MouseListener, MouseMotionList
 	private Pantalla pantalla;
 	private Thread hilo;
 	private boolean gananBlancas=false;
-
+/**
+ * Constructor por defecto
+ */
 	public PanelJuego() {
-		pantalla = new PantallaJuego();	
+		pantalla = new PantallaInicio();	
+		//pantalla=new PantallaFinal();
 		pantalla.inicializarPantalla(this);
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
@@ -104,8 +112,16 @@ public class PanelJuego extends JPanel implements MouseListener, MouseMotionList
 		this.gananBlancas = gananBlancas;
 	}
 	
+	/**
+	 * Método que asigna una nueva pantalla
+	 * @param p la nueva pantalla
+	 */
 	public void asignarPantalla(Pantalla p) {
+		//hilo.interrupt();
 		this.pantalla=p;
 		p.inicializarPantalla(this);
+		
+		hilo=new Thread(this);
+		hilo.start();
 	}
 }

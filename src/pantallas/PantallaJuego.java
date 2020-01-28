@@ -216,6 +216,10 @@ public class PantallaJuego implements Pantalla {
 		return controlJuego.getCasilla(e.getX() / 50, (e.getY() - 100) / 50);
 	}
 
+	/**
+	 * Establece como casillaClickada aquella sobre la que se ha hecho click
+	 * @param e es el evento que da lugar al click
+	 */
 	private void asignarCasillaClick(MouseEvent e) {
 		try {
 			casillaClickada = casillaClickada(e);
