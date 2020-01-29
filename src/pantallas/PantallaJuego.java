@@ -32,7 +32,7 @@ public class PantallaJuego implements Pantalla {
 	 */
 	@Override
 	public void inicializarPantalla(PanelJuego panelJuego) {
-		this.panelJuego=panelJuego;
+		this.panelJuego = panelJuego;
 		controlJuego = new ControlJuego();
 		imagenTablero = new BufferedImage(400, 400, BufferedImage.TYPE_INT_ARGB);
 		crearTablero();
@@ -75,13 +75,13 @@ public class PantallaJuego implements Pantalla {
 		PantallaFinal p;
 		switch (controlJuego.comprobarFinJuego()) {
 		case 1:
-			p=new PantallaFinal();
+			p = new PantallaFinal();
 			p.inicializarPantalla(panelJuego);
 			p.setGanador(true);
 			panelJuego.asignarPantalla(p);
 			break;
 		case 2:
-			p=new PantallaFinal();
+			p = new PantallaFinal();
 			p.inicializarPantalla(panelJuego);
 			p.setGanador(false);
 			panelJuego.asignarPantalla(p);
@@ -112,8 +112,8 @@ public class PantallaJuego implements Pantalla {
 	}
 
 	/**
-	 * Al pulsar el ratón, si es sobre una pieza, marca dónde se puede mover. Si
-	 * no, hace un movimiento
+	 * Al pulsar el ratón, si es sobre una pieza, marca dónde se puede mover. Si no,
+	 * hace un movimiento
 	 */
 	@Override
 	public void pulsarRaton(MouseEvent e) {
@@ -146,7 +146,7 @@ public class PantallaJuego implements Pantalla {
 		Graphics g = imagenTablero.getGraphics();
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				g.setColor(esBlanca ? Color.WHITE : Color.BLACK);
+				g.setColor(esBlanca ? Color.WHITE : Color.RED);
 				g.fillRect(50 * i, 50 * j, 50, 50);
 				esBlanca = !esBlanca;
 			}
@@ -218,6 +218,7 @@ public class PantallaJuego implements Pantalla {
 
 	/**
 	 * Establece como casillaClickada aquella sobre la que se ha hecho click
+	 * 
 	 * @param e es el evento que da lugar al click
 	 */
 	private void asignarCasillaClick(MouseEvent e) {
