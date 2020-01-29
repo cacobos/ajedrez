@@ -6,12 +6,21 @@ import java.util.List;
 import ajedrez.Casilla;
 import ajedrez.ControlJuego;
 
+/**
+ * Clase que identifica una pieza Rey
+ * 
+ * @author ccobosr02
+ *
+ */
 public class Rey extends Pieza {
 
 	public Rey(ControlJuego controlJuego, int color) {
 		super(controlJuego, color == 1 ? "./imagenes/reyblanco.png" : "./imagenes/reynegro.png", color);
 	}
 
+	/**
+	 * Devuelve una lista con las casillas a las que se puede mover
+	 */
 	@Override
 	public List<Casilla> puedeMover() {
 		Casilla c;

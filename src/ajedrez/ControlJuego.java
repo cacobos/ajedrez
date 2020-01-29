@@ -83,15 +83,22 @@ public class ControlJuego {
 		casillaOrigen.setPieza(null);
 		casillaDestino.getPieza().setCoordX(casillaDestino.getCoordX());
 		casillaDestino.getPieza().setCoordY(casillaDestino.getCoordY());
+		Pieza p;
 		if(casillaDestino.getPieza() instanceof Peon) {
 			if(casillaDestino.getCoordY()==0 && casillaDestino.getColor()==1) {
 				jugadorBlanco.getPiezas().remove(casillaDestino.getPieza());
-				casillaDestino.setPieza(new Dama(this, Pieza.BLANCA));
-				jugadorBlanco.getPiezas().add(casillaDestino.getPieza());
+				p=new Dama(this, Pieza.BLANCA);
+				p.setCoordX(casillaDestino.getCoordX());
+				p.setCoordY(casillaDestino.getCoordY());
+				casillaDestino.setPieza(p);
+				jugadorBlanco.getPiezas().add(p);
 			}else if(casillaDestino.getCoordY()==7 && casillaDestino.getColor()==2) {
 				jugadorNegro.getPiezas().remove(casillaDestino.getPieza());
-				casillaDestino.setPieza(new Dama(this, Pieza.NEGRA));
-				jugadorNegro.getPiezas().add(casillaDestino.getPieza());
+				p=new Dama(this, Pieza.NEGRA);
+				p.setCoordX(casillaDestino.getCoordX());
+				p.setCoordY(casillaDestino.getCoordY());
+				casillaDestino.setPieza(p);
+				jugadorBlanco.getPiezas().add(p);
 				
 			}
 		}		

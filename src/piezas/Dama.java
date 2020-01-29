@@ -6,12 +6,21 @@ import java.util.List;
 import ajedrez.Casilla;
 import ajedrez.ControlJuego;
 
+/**
+ * Clase que identifica una dama
+ * 
+ * @author ccobosr02
+ *
+ */
 public class Dama extends Pieza {
 
 	public Dama(ControlJuego controlJuego, int color) {
 		super(controlJuego, color == 1 ? "./imagenes/damablanca.png" : "./imagenes/damanegra.png", color);
 	}
 
+	/**
+	 * Devuelve una lista con las casillas a las que se puede mover
+	 */
 	@Override
 	public List<Casilla> puedeMover() {
 		Casilla c;

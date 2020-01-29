@@ -7,13 +7,20 @@ import java.util.List;
 import ajedrez.Casilla;
 import ajedrez.ControlJuego;
 import ajedrez.PanelJuego;
-
+/**
+ * Clase que identifica un peón
+ * @author ccobosr02
+ *
+ */
 public class Peon extends Pieza {
 
 	public Peon(ControlJuego controlJuego, int color) {
 		super(controlJuego, color == 1 ? "./imagenes/peonblanco.png" : "./imagenes/peonnegro.png", color);
 	}
 
+	/**
+	 * Devuelve una lista con las casillas a las que se puede mover
+	 */
 	@Override
 	public List<Casilla> puedeMover() {
 		List<Casilla> casillas = new ArrayList<Casilla>();
